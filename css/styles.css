@@ -1,0 +1,64 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+}
+
+header {
+  padding: 1.5rem;
+}
+
+.div-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid hsl(217, 16%, 45%);
+  border-radius: 5px;
+}
+
+#logo-header {
+  display: block;
+  width: 100px;
+  height: auto;
+  padding: 1rem;
+}
+
+.div-score {
+  margin: .5rem;
+  padding: .5rem 1rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.div-score > span {
+  display: block;
+}
+
+.div-score > span:first-of-type {
+  font-size: .65rem;
+  font-weight: 800;
+  color: hsl(229, 64%, 46%);
+  text-transform: uppercase;
+}
+ 
+.div-score > span:last-of-type {
+  font-size: 1.5rem;
+  color: hsl(217, 16%, 45%);
+}
+
+main {
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.div-your-score, .div-house-score {
+  flex: 2 50%;
+}
+
+.div-game {
+  flex: 1 100%;
+}
