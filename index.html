@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/reset.css">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <script type="text/javascript" src="./js/game.js"></script>
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
 </head>
@@ -28,22 +29,30 @@
   <main>
     <div class="div-your-score">
       <h2>You Picked</h2>
-      <span></span>
+      <div class="hide">
+        <span class="hide"></span>
+      </div>
     </div>
     <div class="div-house-score">
       <h2>The House Picked</h2>
       <span></span>
     </div>
     <div class="div-game">
-      <ul>
-        <li>
-          <img id="icon-paper" src="./images/icon-paper.svg" alt="icon of a paper hand signal"/>
+      <ul class="list-icons">
+        <li class="item-icon">
+          <div class="div-icon">
+            <img class="icon-paper" src="./images/icon-paper.svg" alt="icon of a paper hand signal"/>
+          </div>
         </li>
-        <li>
-          <img id="icon-scissors" src="./images/icon-scissors.svg" alt="icon of a scissor hand signal"/>
+        <li class="item-icon">
+          <div class="div-icon">
+            <img class="icon-scissor" src="./images/icon-scissors.svg" alt="icon of a scissor hand signal"/>
+          </div>
         </li>
-        <li>
-          <img id="icon-rock" src="./images/icon-rock.svg" alt="icon of a rock hand signal"/>
+        <li class="item-icon">
+          <div class="div-icon">
+            <img class="icon-rock" src="./images/icon-rock.svg" alt="icon of a rock hand signal"/>
+          </div>
         </li>
       </ul>
     </div>
