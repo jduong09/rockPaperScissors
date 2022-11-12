@@ -27,15 +27,17 @@
     </div>
   </header>
   <main>
-    <div class="div-your-score">
+    <div class="div-your-score cover">
       <h2>You Picked</h2>
-      <div class="hide">
-        <span class="hide"></span>
+      <div>
+        <span></span>
       </div>
     </div>
-    <div class="div-house-score">
+    <div class="div-house-score cover">
       <h2>The House Picked</h2>
-      <span></span>
+      <div>
+        <span></span>
+      </div>
     </div>
     <div class="div-game">
       <ul class="list-icons">
@@ -46,7 +48,7 @@
         </li>
         <li class="item-icon">
           <div class="div-icon">
-            <img class="icon-scissor" src="./images/icon-scissors.svg" alt="icon of a scissor hand signal"/>
+            <img class="icon-scissors" src="./images/icon-scissors.svg" alt="icon of a scissor hand signal"/>
           </div>
         </li>
         <li class="item-icon">
@@ -56,18 +58,15 @@
         </li>
       </ul>
     </div>
-    <div class="div-win">You Win</div>
-    <div class="div-lose">You Lose</div>
-    <div class="div-play-again">
-      <button>Play Again</button>
+    <div id="div-win" class="hide">You Win</div>
+    <div id="div-lose" class="hide">You Lose</div>
+    <div id="div-draw" class="hide">Draw</div>
+    <div id="div-play-again" class="hide">
+      <button id="btn-reset">Play Again</button>
     </div>
     <div class="div-rules">
       <button>Rules</button>
     </div>
   </main>
-  You Win
-  You Lose
-
-  Play Again
 </body>
 </html>
