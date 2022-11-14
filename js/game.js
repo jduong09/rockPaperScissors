@@ -14,7 +14,6 @@ const updateUserChoice = (choice) => {
 
 const updateHouseChoice = (num) => {
   let houseChoice;
-  const outerDivHouseScore = document.querySelector('.div-house-score');
   const divHouseScore = document.querySelector('.div-house-score div');
   const spanHouseScore = document.querySelector('.div-house-score span');
   const icon = document.createElement('img');
@@ -45,6 +44,12 @@ const updateHouseChoice = (num) => {
   }
 
   spanHouseScore.appendChild(icon);
+
+  return houseChoice;
+}
+
+const revealHousePick = () => {
+  const outerDivHouseScore = document.querySelector('.div-house-score');
   outerDivHouseScore.classList.remove('cover');
 }
 
@@ -55,6 +60,7 @@ const setResult = (userChoice, houseChoice) => {
   const divDraw = document.getElementById('div-draw');
   const divPlayAgain = document.getElementById('div-play-again');
   let winner;
+  console.log(userChoice, houseChoice);
 
   if (userChoice === 'paper') {
     if (houseChoice === 'paper') {
@@ -132,15 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const gameIcons = document.querySelectorAll('.div-game img');
   const buttonReset = document.getElementById('btn-reset');
   let userChoice = '';
-  let houseChoice = '';
   let randomNumber = getRandomNumber();
+  let houseChoice = updateHouseChoice(randomNumber);
 
 
   buttonReset.addEventListener('click', () => {
     resetGame();
     randomNumber = getRandomNumber();
     userChoice = '';
-    houseChoice = '';
+    houseChoice = updateHouseChoice(randomNumber);
   });
 
   for (let i = 0; i < gameIcons.length; i++) {
@@ -149,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gameIcon.addEventListener('click', (e) => {
       e.preventDefault();
       userChoice = e.currentTarget.classList[0].slice(5);
-      console.log(userChoice, houseChoice);
 
       setTimeout(() => {
         divGame.classList.add('hide');
@@ -157,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 2500);
 
       setTimeout(() => {
-        houseChoice = updateHouseChoice(randomNumber);
+        revealHousePick();
         setResult(userChoice, houseChoice);
       }, 5000);
     });
