@@ -10,6 +10,7 @@ const updateUserChoice = (choice) => {
   spanYourScore.appendChild(icon);
   divYourScore.classList.add(`${choice}`);
   outerDivYourScore.classList.remove('cover');
+  outerDivYourScore.classList.remove('hide');
 }
 
 const updateHouseChoice = (num) => {
@@ -51,6 +52,7 @@ const updateHouseChoice = (num) => {
 const revealHousePick = () => {
   const outerDivHouseScore = document.querySelector('.div-house-score');
   outerDivHouseScore.classList.remove('cover');
+  outerDivHouseScore.classList.remove('hide');
 }
 
 const setResult = (userChoice, houseChoice) => {
@@ -60,8 +62,7 @@ const setResult = (userChoice, houseChoice) => {
   const divDraw = document.getElementById('div-draw');
   const divPlayAgain = document.getElementById('div-play-again');
   let winner;
-  console.log(userChoice, houseChoice);
-
+  
   if (userChoice === 'paper') {
     if (houseChoice === 'paper') {
       winner = 'none';
@@ -118,10 +119,11 @@ const resetGame = () => {
   divWin.classList.add('hide');
   divLose.classList.add('hide');
   divDraw.classList.add('hide');
-  divYourScore.classList.add('cover');
   borderYourScore.classList = '';
   borderHouseScore.classList = '';
+  divYourScore.classList.add('hide');
   divHouseScore.classList.add('cover');
+  divHouseScore.classList.add('hide');
   divPlayAgain.classList.add('hide');
 
   prevYourChoice.remove();
@@ -132,21 +134,42 @@ const getRandomNumber = () => {
   return Math.floor(Math.random() * 3);
 }
 
+/*
+ * In order to run a game round, we need the user choice and the house choice.
+ * After the user clicks on a game icon, this function will run
+ * It will gather the user choice from the clicked event
+ * It will create the house choice
+ * It will then hide the game icons,
+ * Display the user choice and show the hidden house choice
+ * Reveal the house choice
+ * Reveal the result
+ * 
+*/
+// userChoice is either 'paper', 'scissors', 'rock'
+const runGameRound = (userChoice) => {
+  const divGame = document.querySelector('.div-game');
+  const divHouseScore = document.querySelector('.div-house-score');
+  
+  let houseChoice = updateHouseChoice(getRandomNumber());
+
+  divGame.classList.add('hide');
+
+  updateUserChoice(userChoice);
+  divHouseScore.classList.remove('hide');
+
+  setTimeout(() => {
+    divHouseScore.classList.remove('cover');
+    setResult(userChoice, houseChoice);
+  }, 2500);
+};
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  const divGame = document.querySelector('.div-game');
   const gameIcons = document.querySelectorAll('.div-game img');
   const buttonReset = document.getElementById('btn-reset');
-  let userChoice = '';
-  let randomNumber = getRandomNumber();
-  let houseChoice = updateHouseChoice(randomNumber);
-
-
+  
   buttonReset.addEventListener('click', () => {
     resetGame();
-    randomNumber = getRandomNumber();
-    userChoice = '';
-    houseChoice = updateHouseChoice(randomNumber);
   });
 
   for (let i = 0; i < gameIcons.length; i++) {
@@ -155,16 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameIcon.addEventListener('click', (e) => {
       e.preventDefault();
       userChoice = e.currentTarget.classList[0].slice(5);
-
-      setTimeout(() => {
-        divGame.classList.add('hide');
-        updateUserChoice(userChoice);
-      }, 2500);
-
-      setTimeout(() => {
-        revealHousePick();
-        setResult(userChoice, houseChoice);
-      }, 5000);
+      runGameRound(userChoice);
     });
   }
 });

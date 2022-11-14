@@ -1,4 +1,5 @@
 body {
+  position: relative;
   min-height: 100vh;
   background: linear-gradient(to bottom, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   font-family: 'Barlow Semi Condensed', sans-serif;
@@ -10,8 +11,8 @@ body {
   display: none !important;
 }
 
-.cover {
-  opacity: 0;
+.div-icon, .div-rules > button, #div-play-again > button, #btn-modal-close {
+  cursor: pointer;
 }
 
 header {
@@ -58,14 +59,16 @@ header {
 }
 
 main {
-  padding: 0 1.5rem;
   display: flex;
   flex-wrap: wrap;
+  padding: 0 1.5rem;
+  margin: 4rem 0;
 }
 
 .div-your-score, .div-house-score {
   flex: 2 50%;
   text-align: center;
+  margin: 2rem 0;
 }
 
 .div-your-score > div, .div-house-score > div {
@@ -74,6 +77,14 @@ main {
 
 .div-your-score > div > span, .div-house-score > div > span {
   display: block;
+}
+
+.div-house-score.cover > div {
+  background: transparent !important;
+}
+
+.div-house-score.cover > div > span {
+  background: hsl(229, 25%, 31%);
 }
 
 .div-game {
@@ -120,7 +131,6 @@ main {
   width: fit-content;
   height: auto;
   background-color: white;
-  cursor: pointer;
 }
 
 .icon-paper, .icon-scissor, .icon-rock {
@@ -152,7 +162,7 @@ main {
 }
 
 .div-rules {
-  margin-top: 2rem;
+  margin-top: 8rem;
 }
 
 .div-rules > button {
@@ -161,4 +171,33 @@ main {
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: .15rem;
+}
+
+.rules-modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: hsl(0, 0%, 100%);
+  text-align: center;
+}
+
+.rules-modal > h2 {
+  font-size: 2rem;
+  margin: 5rem 0;
+  color: hsl(237, 49%, 15%);
+  text-transform: uppercase;
+}
+
+#img-rules {
+  display: block;
+  width: 85%;
+  height: auto;
+  margin: 5rem auto;
+}
+
+#btn-modal-close {
+  margin: 0 auto;
 }
