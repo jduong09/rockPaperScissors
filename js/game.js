@@ -61,6 +61,8 @@ const setResult = (userChoice, houseChoice) => {
   const divLose = document.getElementById('div-lose');
   const divDraw = document.getElementById('div-draw');
   const divPlayAgain = document.getElementById('div-play-again');
+  const divYourScore = document.querySelector('.div-your-score');
+  const divHouseScore = document.querySelector('.div-house-score');
   let winner;
   
   if (userChoice === 'paper') {
@@ -92,8 +94,10 @@ const setResult = (userChoice, houseChoice) => {
   if (winner === 'user') {
     score.innerHTML = `${parseInt(score.innerHTML) + 1}`;
     divWin.classList.remove('hide');
+    divYourScore.classList.add('winner');
   } else if (winner === 'house') {
     divLose.classList.remove('hide');
+    divHouseScore.classList.add('winner');
   } else {
     divDraw.classList.remove('hide');
   }
@@ -122,8 +126,10 @@ const resetGame = () => {
   borderYourScore.classList = '';
   borderHouseScore.classList = '';
   divYourScore.classList.add('hide');
+  divYourScore.classList.remove('winner');
   divHouseScore.classList.add('cover');
   divHouseScore.classList.add('hide');
+  divHouseScore.classList.remove('winner');
   divPlayAgain.classList.add('hide');
 
   prevYourChoice.remove();

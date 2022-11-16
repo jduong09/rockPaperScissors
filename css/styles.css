@@ -69,6 +69,7 @@ main {
   flex: 2 50%;
   text-align: center;
   margin: 2rem 0;
+  position: relative;
 }
 
 .div-your-score > div, .div-house-score > div {
@@ -79,12 +80,27 @@ main {
   display: block;
 }
 
+.div-your-score.winner > div::after, .div-house-score.winner > div::after {
+  content: '';
+  width: 250px;
+  height: 250px;
+  background:  repeating-radial-gradient(#4848481a -4%, #61616133 15%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
 .div-house-score.cover > div {
   background: transparent !important;
+  box-shadow: none !important;
 }
 
 .div-house-score.cover > div > span {
   background: hsl(229, 25%, 31%);
+  box-shadow: none !important;
 }
 
 .div-game {
@@ -98,31 +114,73 @@ main {
   justify-content: space-around;
   background-image: url('../images/bg-triangle.svg');
   background-repeat: no-repeat;
-  background-size: 65%;
-  background-position: top 4rem left 3.5rem;
+  background-size: 55%;
+  background-position: center;
 }
 
 .item-icon, .div-your-score > div, .div-house-score > div {
   width: fit-content;
   height: auto;
-  padding: 1rem;
   border-radius: 50%;
 }
 
-.item-icon:first-of-type, .div-your-score > div.paper, .div-house-score > div.paper {
-  background: linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-  margin-left: 1rem;
+.div-your-score > div, .div-house-score > div  {
+  padding: 1rem;
 }
 
-.item-icon:nth-of-type(2n), .div-your-score > div.scissors, .div-house-score > div.scissors {
-  background: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-  margin-left: auto;
-  margin-right: 1rem;
+.item-icon {
+  z-index: 2;
 }
 
-.item-icon:last-of-type, .div-your-score > div.rock, .div-house-score > div.rock {
-  background: linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+.item-icon:first-of-type, .item-icon:nth-of-type(2n) {
+  flex: 2 50%;
+}
+
+.item-icon:last-of-type {
+  flex: 1 100%;
+}
+
+.item-icon > div {
+  position: relative;
   margin: 0 auto;
+}
+
+.item-icon:last-of-type > div {
+  margin-top: 4rem;
+}
+
+.item-icon > div::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(to top, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: inset 0px -5px hsl(230deg 54% 44%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.item-icon:first-of-type > div::after, .div-your-score > div.paper, .div-house-score > div.paper {
+  background: linear-gradient(to top, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: inset 0px -5px hsl(230deg 54% 44%);
+}
+
+.item-icon:nth-of-type(2n) > div::after, .div-your-score > div.scissors, .div-house-score > div.scissors {
+  background: linear-gradient(to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: inset 0px -5px hsl(39deg 100% 36%);
+}
+
+.item-icon:last-of-type > div::after, .div-your-score > div.rock, .div-house-score > div.rock {
+  background: linear-gradient(to top, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: inset 0px -5px hsl(349deg 66% 39%);
+}
+
+.div-icon, .div-your-score > div > span, .div-house-score > div > span {
+  box-shadow: inset 0 4px hsl(230deg 89% 62% / 20%);
 }
 
 .div-icon, .div-your-score > div > span, .div-house-score > div > span {
@@ -179,7 +237,7 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 5;
   background-color: hsl(0, 0%, 100%);
   text-align: center;
 }
