@@ -369,7 +369,6 @@ main {
 
   main {
     margin-top: 1.5rem;
-    padding: 0 6rem;
   }
 
   .list-icons {
@@ -438,5 +437,48 @@ main {
   #btn-modal-close {
     order: 2;
     text-align: end;
+  }
+}
+
+@media (min-width: 1400px) {
+  header {
+    padding: 1.5rem 21rem;
+  }
+
+  #logo-header {
+    width: 150px;
+  }
+
+  .div-score {
+    padding: 1rem 2rem;
+  }
+
+  .div-score > span:first-of-type {
+    font-size: .85rem;
+  }
+
+  .div-score > span:last-of-type {
+    font-size: 2rem;
+  }
+
+  .div-your-score, .div-house-score {
+    flex: 3 25%;
+  }
+
+  .div-your-score {
+    margin-left: 6rem;
+  }
+
+  .div-house-score {
+    margin-right: 6rem;
+  }
+
+  .div-result {
+    flex: 3 20%;
+  }
+
+  .list-icons {
+    width: 45%;
+    background-size: 45%;
   }
 }
