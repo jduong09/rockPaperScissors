@@ -11,6 +11,16 @@ body {
   display: none !important;
 }
 
+#bg-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: hsla(0, 0%, 0%, .25);
+}
+
 .div-icon, .div-rules > button, #div-play-again > button, #btn-modal-close {
   cursor: pointer;
 }
@@ -60,6 +70,7 @@ header {
 
 main {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   padding: 0 1.5rem;
   margin: 4rem 0;
@@ -73,7 +84,7 @@ main {
 }
 
 .div-your-score > div, .div-house-score > div {
-  margin: 1rem auto !important;
+  margin: 1rem auto;
 }
 
 .div-your-score > div > span, .div-house-score > div > span {
@@ -101,6 +112,12 @@ main {
 .div-house-score.cover > div > span {
   background: hsl(229, 25%, 31%);
   box-shadow: none !important;
+}
+
+.div-your-score > h2, .div-house-score > h2 {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: .15rem;
 }
 
 .div-game {
@@ -258,4 +275,168 @@ main {
 
 #btn-modal-close {
   margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .list-icons {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  #img-rules {
+    width: 60%;
+  }
+}
+
+@media (min-width: 766px) {
+  .list-icons {
+    width: 60%;
+  }
+
+  #img-rules {
+    width: 40%;
+  }
+}
+
+@media (min-width: 922px) {
+  header {
+    padding: 1.5rem 9rem;
+  }
+
+  .div-header {
+    border-radius: 10px;
+  }
+
+  #logo-header {
+    width: 125px;
+  }
+
+  .div-score {
+    padding: .75rem 1.5rem;
+    border-radius: 10px;
+  }
+
+  main {
+    margin: 4.5rem 0 1.5rem 0;
+  }
+
+  .div-your-score, .div-house-score {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .div-your-score.winner > div::after, .div-house-score.winner > div::after {
+    width: 475px;
+    height: 475px;
+  }
+
+  .div-your-score > div, .div-house-score > div {
+    margin: 1.5rem auto;
+  }
+
+  .div-icon, .div-your-score > div > span, .div-house-score > div > span {
+    padding: 2rem;
+  }
+
+  .div-result {
+    flex: 1 100%;
+  }
+
+  #div-win, #div-lose, #div-draw, #div-play-again {
+    flex: none;
+  }
+
+  .div-rules {
+    margin-top: 1rem;
+  }
+
+  .div-rules > button {
+    display: block;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .rules-modal > h2, #img-modal {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  header {
+    padding: 1.5rem 15rem;
+  }
+
+  main {
+    margin-top: 1.5rem;
+    padding: 0 6rem;
+  }
+
+  .list-icons {
+    width: 50%;
+    background-position: top 85% left 50%;
+  }
+
+  .icon-scissors, .icon-paper, .icon-rock {
+    width: 75px;
+    height: auto;
+  }
+
+  .item-icon:last-of-type > div {
+    margin-top: 2rem;
+  }
+
+  .div-your-score, .div-house-score, .div-result {
+    flex: 3 33%;
+  }
+
+  .div-your-score {
+    order: 1;
+  }
+
+  .div-house-score {
+    order: 3;
+  }
+
+  .div-result {
+    order: 2;
+  }
+
+  .div-rules {
+    order: 4;
+  }
+
+  .rules-modal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 30%;
+    height: auto;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: start;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .rules-modal > h2, #btn-modal-close {
+    flex: 2 50%;
+  }
+
+  .rules-modal > h2 {
+    order: 1;
+    margin: 0;
+  }
+
+  #img-rules {
+    order: 3;
+    margin: 2rem auto 0 auto;
+    width: 90%;
+  }
+
+  #btn-modal-close {
+    order: 2;
+    text-align: end;
+  }
 }
